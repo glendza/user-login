@@ -18,3 +18,30 @@ Using [GoLang](https://go.dev/), create a backend that processes the login infor
 1. Within reason, treat your solution as if it would become a production system.
 1. If you have any questions, feel free to contact us at code_challenge@scoir.com
 
+## How-To
+
+### Cloning the repo
+
+`cd` into a wanted directory and do the:
+
+```sh
+git clone https://github.com/glendza/user-login.git user-login-test-challenge
+```
+
+### Running back-end
+
+From the repo root:
+
+```sh
+# TODO
+```
+
+### Running front-end
+
+From the repo root:
+
+```sh
+cd client && npm run start
+```
+
+## Assumptions
