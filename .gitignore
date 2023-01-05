@@ -1,6 +1,11 @@
 # Editor
 .vscode/*
 
+# Env files
+.env
+.env.*
+!.env.example
+
 # Server
 
 
