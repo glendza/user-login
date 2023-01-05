@@ -9,14 +9,15 @@ import (
 
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token := c.Request.Header.Get("Token")
-		userId, err := services.ParseJWT(token)
+		tokenString := c.Request.Header.Get("Token")
+		token, err := services.ParseJWT(tokenString)
 
 		if err != nil {
 			c.AbortWithStatus(401)
 			return
 		}
 
+		userId := services.ExtractUserId(token)
 		user := models.GetUserById(userId)
 		c.Set("x-user", *user)
 

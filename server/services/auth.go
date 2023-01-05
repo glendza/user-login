@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"glendza/login-code-challenge/config"
 	"glendza/login-code-challenge/models"
 
@@ -25,7 +26,7 @@ func GenerateJWT(user *models.User) (string, error) {
 	return tokenString, err
 }
 
-func ParseJWT(tokenString string) (int, error) {
+func ParseJWT(tokenString string) (*jwt.Token, error) {
 	secretKey := []byte(config.GetConfig().SecretKey)
 
 	token, err := jwt.ParseWithClaims(tokenString, &JwtClaims{}, func(token *jwt.Token) (interface{}, error) {
@@ -33,12 +34,18 @@ func ParseJWT(tokenString string) (int, error) {
 	})
 
 	if err != nil {
-		return 0, err
+		return nil, err
 	}
 
-	if claims, ok := token.Claims.(*JwtClaims); ok && token.Valid {
-		return claims.UserID, err
+	if !token.Valid {
+		err := errors.New("invalid token")
+		return nil, err
 	}
 
-	return 0, err
+	return token, nil
+}
+
+func ExtractUserId(token *jwt.Token) int {
+	claims, _ := token.Claims.(*JwtClaims)
+	return claims.UserID
 }
