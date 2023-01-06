@@ -56,7 +56,8 @@ npm install
 npm run start
 ```
 
-## Assumptions
+## Assumptions & shortcomings
 - Since the solution should be treated as it would become a production system, special attention was given to make the solution scalable;
 - Since it's just a showcase, there is no DB/ORM installed for the time being;
-- The app itself is crude, no attention whatsoever was given to the styling of the actual layout.
+- The app itself is crude, no attention whatsoever was given to the styling of the actual layout;
+- Barely any attention was given to environment separation.
