@@ -3,7 +3,7 @@ package models
 import "errors"
 
 type User struct {
-	ID           int    `json:"user_id,omitempty"`
+	ID           int    `json:"id,omitempty"`
 	Username     string `json:"username"`
 	PasswordHash string `json:"-"`
 }

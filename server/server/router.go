@@ -11,13 +11,14 @@ func NewRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
+	router.Use(middlewares.CORSMiddleware())
 
 	v1 := router.Group("api/v1")
 	{
 		authGroup := v1.Group("auth")
 		{
 			auth := new(controllers.AuthController)
-			authGroup.GET("/login", auth.Login)
+			authGroup.POST("/login", auth.Login)
 		}
 
 		userGroup := v1.Group("user").Use(middlewares.AuthMiddleware())
@@ -26,5 +27,6 @@ func NewRouter() *gin.Engine {
 			userGroup.GET("/self", user.RetrieveSelf)
 		}
 	}
+
 	return router
 }

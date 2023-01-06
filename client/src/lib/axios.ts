@@ -1,11 +1,10 @@
 import Axios, { AxiosRequestConfig } from "axios";
 
 import { API_URL } from "@/config";
-import storage from "@/utils/storage";
 
 const authRequestInterceptor = (config: AxiosRequestConfig) => {
-  const token = storage.getItem('token')
-  
+  const token = localStorage.getItem('token')
+
   const headers = () => {
     if (!config.headers) {
       config.headers = {};
@@ -14,9 +13,9 @@ const authRequestInterceptor = (config: AxiosRequestConfig) => {
   }
 
   if (token) {
-    headers.Authorization = token;
+    headers().Authorization = token;
   }
-  headers.Accept = "application/json";
+  headers().Accept = "application/json";
   return config;
 };
 

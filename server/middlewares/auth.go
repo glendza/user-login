@@ -9,7 +9,7 @@ import (
 
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		tokenString := c.Request.Header.Get("Token")
+		tokenString := c.Request.Header.Get("Authorization")
 		token, err := services.ParseJWT(tokenString)
 
 		if err != nil {
