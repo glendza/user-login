@@ -35,7 +35,7 @@ From the repo root:
 ```sh
 # Navigate to back-end app directory
 cd server
-# Install dependencies (assuming that )
+# Install dependencies
 go get .
 # Run back-end
 go run *.go
