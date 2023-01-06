@@ -56,8 +56,20 @@ npm install
 npm run start
 ```
 
+### Running dockerized
+
+From the repo root:
+
+```sh
+docker-compose build --no-cache && docker-compose up -d
+```
+
+The app will be available on port 3000.
+
 ## Assumptions & shortcomings
+- The app was developed and tested on Linux. Should make no significant difference for MacOS or any other Unix-based OS, but for windows, the setup is probably different;
 - Since the solution should be treated as it would become a production system, special attention was given to make the solution scalable;
 - Since it's just a showcase, there is no DB/ORM installed for the time being;
 - The app itself is crude, no attention whatsoever was given to the styling of the actual layout;
+- Docker setup is not optimized;
 - Barely any attention was given to environment separation.
